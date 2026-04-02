@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zum Balkan Ställchen — Authentische Balkanküche · Velbert</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5EFE0;
+    --cream-light: #FAF6EE;
+    --dark: #1A1208;
+    --dark-mid: #2E2010;
+    --gold: #C8973A;
+    --gold-light: #E8BE6A;
+    --gold-pale: #F2DCB0;
+    --red: #8B2020;
+    --text-muted: #6B5A3A;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Jost', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--dark);
+    color: var(--cream);
+    font-family: var(--sans);
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.4rem 4rem;
+    transition: background 0.4s, padding 0.4s;
+  }
+  nav.scrolled {
+    background: rgba(26,18,8,0.96);
+    backdrop-filter: blur(12px);
+    padding: 1rem 4rem;
+    border-bottom: 1px solid rgba(200,151,58,0.2);
+  }
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    color: var(--gold-light);
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--cream);
+    text-decoration: none;
+    opacity: 0.8;
+    transition: opacity 0.2s, color 0.2s;
+  }
+  .nav-links a:hover { opacity: 1; color: var(--gold-light); }
+  .nav-reserve {
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--dark);
+    background: var(--gold);
+    padding: 0.6rem 1.4rem;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .nav-reserve:hover { background: var(--gold-light); }
+
+  /* ── HERO ── */
+  #hero {
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 50% 60%, rgba(200,151,58,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(139,32,32,0.15) 0%, transparent 50%),
+      linear-gradient(180deg, rgba(26,18,8,0.3) 0%, rgba(26,18,8,0.7) 60%, rgba(26,18,8,0.98) 100%),
+      url('https://github.com/engineerodeh-glitch/images/blob/main/image%20Apr%202,%202026,%2005_52_45.png?raw=true') center/cover no-repeat;
+  }
+  .hero-ornament {
+    position: absolute;
+    top: 0; left: 50%; transform: translateX(-50%);
+    width: 2px;
+    height: 120px;
+    background: linear-gradient(180deg, transparent, var(--gold));
+    opacity: 0.6;
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 0 2rem;
+    animation: heroFade 1.4s ease both;
+  }
+  @keyframes heroFade {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-eyebrow {
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    font-weight: 400;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+  }
+  .hero-title {
+    font-family: var(--serif);
+    font-size: clamp(3rem, 7vw, 6rem);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--cream-light);
+    margin-bottom: 0.3rem;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+  .hero-subtitle {
+    font-family: var(--serif);
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--gold-pale);
+    margin-bottom: 2.2rem;
+    opacity: 0.85;
+  }
+  .hero-divider {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    margin: 0 auto 2rem;
+    opacity: 0.6;
+  }
+  .hero-tagline {
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    color: var(--cream);
+    opacity: 0.7;
+    margin-bottom: 2.8rem;
+    line-height: 1.8;
+  }
+  .hero-ctas {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--dark);
+    background: var(--gold);
+    padding: 1rem 2.4rem;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .btn-ghost {
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--cream);
+    border: 1px solid rgba(200,151,58,0.5);
+    padding: 1rem 2.4rem;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s, transform 0.2s;
+    display: inline-block;
+  }
+  .btn-ghost:hover { border-color: var(--gold); color: var(--gold-light); transform: translateY(-2px); }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: 2;
+    animation: bounce 2s ease infinite;
+  }
+  .hero-scroll span {
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.7;
+  }
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(180deg, var(--gold), transparent);
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(6px); }
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 6rem 0; }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 4rem;
+  }
+
+  .section-eyebrow {
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--cream-light);
+    margin-bottom: 1.5rem;
+  }
+  .section-title em { font-style: italic; color: var(--gold-light); }
+  .section-body {
+    font-size: 0.95rem;
+    line-height: 1.9;
+    color: var(--cream);
+    opacity: 0.75;
+    max-width: 560px;
+  }
+
+  /* ── BADGES / STARS ── */
+  .rating-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: rgba(200,151,58,0.12);
+    border: 1px solid rgba(200,151,58,0.3);
+    padding: 0.5rem 1.2rem;
+    margin-bottom: 2rem;
+  }
+  .stars { color: var(--gold); font-size: 0.9rem; letter-spacing: 0.1em; }
+  .rating-text { font-family: var(--sans); font-size: 0.8rem; letter-spacing: 0.1em; color: var(--gold-pale); }
+
+  /* ── ABOUT SPLIT ── */
+  #about {
+    background: var(--dark);
+    border-top: 1px solid rgba(200,151,58,0.1);
+  }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+  .about-img-wrap {
+    position: relative;
+  }
+  .about-img-frame {
+    width: 100%;
+    aspect-ratio: 4/5;
+    background:
+      url('https://images.unsplash.com/photo-1544025162-d76694265947?w=800&q=80') center/cover no-repeat;
+    position: relative;
+  }
+  .about-img-frame::before {
+    content: '';
+    position: absolute;
+    inset: -16px -16px 16px 16px;
+    border: 1px solid rgba(200,151,58,0.3);
+    z-index: -1;
+  }
+  .about-accent {
+    position: absolute;
+    bottom: -2rem;
+    right: -2rem;
+    width: 140px;
+    height: 140px;
+    background: rgba(200,151,58,0.08);
+    border: 1px solid rgba(200,151,58,0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+  }
+  .about-accent .num {
+    font-family: var(--serif);
+    font-size: 2.8rem;
+    font-weight: 300;
+    color: var(--gold-light);
+    line-height: 1;
+  }
+  .about-accent .lbl {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.8;
+  }
+
+  /* ── PILLARS ── */
+  #pillars {
+    background: var(--dark-mid);
+    border-top: 1px solid rgba(200,151,58,0.1);
+    border-bottom: 1px solid rgba(200,151,58,0.1);
+  }
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+  }
+  .pillar {
+    padding: 3rem 2.5rem;
+    border-right: 1px solid rgba(200,151,58,0.12);
+    transition: background 0.3s;
+  }
+  .pillar:last-child { border-right: none; }
+  .pillar:hover { background: rgba(200,151,58,0.04); }
+  .pillar-icon {
+    font-family: var(--serif);
+    font-size: 2.5rem;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+    opacity: 0.8;
+  }
+  .pillar-title {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--cream-light);
+    margin-bottom: 0.8rem;
+  }
+  .pillar-body {
+    font-size: 0.88rem;
+    line-height: 1.85;
+    color: var(--cream);
+    opacity: 0.65;
+  }
+
+  /* ── MENU HIGHLIGHTS ── */
+  #menu { background: var(--dark); }
+  .menu-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 4rem;
+  }
+  .menu-header .section-body { margin-bottom: 0; }
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-bottom: 3rem;
+  }
+  .menu-card {
+    position: relative;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .menu-card:first-child {
+    grid-row: span 2;
+    aspect-ratio: auto;
+  }
+  .menu-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    display: block;
+  }
+  .menu-card:hover .menu-card-img { transform: scale(1.05); }
+  .menu-card-bg {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.5s ease;
+  }
+  .menu-card:hover .menu-card-bg { transform: scale(1.05); }
+  .menu-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 40%, rgba(26,18,8,0.9) 100%);
+  }
+  .menu-card-content {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 1.5rem;
+  }
+  .menu-card-tag {
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+  }
+  .menu-card-name {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--cream-light);
+    line-height: 1.2;
+  }
+  .menu-card-desc {
+    font-size: 0.8rem;
+    color: var(--cream);
+    opacity: 0.65;
+    margin-top: 0.4rem;
+    line-height: 1.6;
+  }
+
+  /* Individual card backgrounds */
+  .mc1 { background: url('https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=800&q=80') center/cover; }
+  .mc2 { background: url('https://images.unsplash.com/photo-1544025162-d76694265947?w=600&q=80') center/cover; }
+  .mc3 { background: url('https://images.unsplash.com/photo-1558030006-450675393462?w=600&q=80') center/cover; }
+  .mc4 { background: url('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&q=80') center/cover; }
+  .mc5 { background: url('https://images.unsplash.com/photo-1551326844-4df70f78d0e9?w=600&q=80') center/cover; }
+
+  .menu-footer { text-align: center; }
+
+  /* ── AMBIANCE STRIP ── */
+  #ambiance {
+    padding: 0;
+    height: 60vh;
+    min-height: 400px;
+    position: relative;
+    overflow: hidden;
+  }
+  .ambiance-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(26,18,8,0.85) 0%, rgba(26,18,8,0.3) 50%, rgba(26,18,8,0.85) 100%),
+      url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1600&q=80') center/cover no-repeat;
+  }
+  .ambiance-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem;
+  }
+  .ambiance-quote {
+    font-family: var(--serif);
+    font-size: clamp(1.5rem, 3.5vw, 2.8rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--cream-light);
+    max-width: 700px;
+    line-height: 1.4;
+    margin-bottom: 1.5rem;
+  }
+  .ambiance-attr {
+    font-size: 0.72rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* ── REVIEWS ── */
+  #reviews {
+    background: var(--dark-mid);
+    border-top: 1px solid rgba(200,151,58,0.1);
+  }
+  .reviews-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+  .reviews-header .section-body { margin: 0 auto; text-align: center; }
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .review-card {
+    background: rgba(200,151,58,0.04);
+    border: 1px solid rgba(200,151,58,0.15);
+    padding: 2rem;
+    transition: border-color 0.3s, background 0.3s;
+  }
+  .review-card:hover {
+    border-color: rgba(200,151,58,0.35);
+    background: rgba(200,151,58,0.07);
+  }
+  .review-stars {
+    color: var(--gold);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+  }
+  .review-text {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--cream-light);
+    line-height: 1.65;
+    margin-bottom: 1.2rem;
+  }
+  .review-author {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.8;
+  }
+  .review-location {
+    font-size: 0.75rem;
+    color: var(--cream);
+    opacity: 0.45;
+    margin-top: 0.2rem;
+  }
+  .reviews-summary {
+    margin-top: 4rem;
+    text-align: center;
+    display: flex;
+    gap: 4rem;
+    justify-content: center;
+    align-items: center;
+    padding-top: 3rem;
+    border-top: 1px solid rgba(200,151,58,0.15);
+  }
+  .summary-num {
+    font-family: var(--serif);
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: var(--gold-light);
+    line-height: 1;
+  }
+  .summary-lbl {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--cream);
+    opacity: 0.55;
+    margin-top: 0.4rem;
+  }
+  .summary-divider {
+    width: 1px;
+    height: 60px;
+    background: rgba(200,151,58,0.2);
+  }
+
+  /* ── INFO ── */
+  #info {
+    background: var(--dark);
+    border-top: 1px solid rgba(200,151,58,0.1);
+  }
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+  .info-map {
+    width: 100%;
+    aspect-ratio: 4/3;
+    background:
+      linear-gradient(135deg, rgba(200,151,58,0.05) 0%, transparent 100%),
+      url('https://maps.googleapis.com/maps/api/staticmap?center=Südstraße+1,+42551+Velbert,+Germany&zoom=15&size=600x450&maptype=roadmap&key=DEMO') center/cover;
+    border: 1px solid rgba(200,151,58,0.2);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .map-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    min-height: 320px;
+    background: rgba(200,151,58,0.03);
+    border: 1px solid rgba(200,151,58,0.2);
+    gap: 1rem;
+  }
+  .map-pin { font-size: 2.5rem; opacity: 0.6; }
+  .map-address {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    color: var(--cream);
+    opacity: 0.8;
+    text-align: center;
+    line-height: 1.6;
+  }
+  .map-link {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(200,151,58,0.4);
+    padding-bottom: 2px;
+    transition: opacity 0.2s;
+  }
+  .map-link:hover { opacity: 0.7; }
+  .info-details { }
+  .info-block {
+    margin-bottom: 2.5rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid rgba(200,151,58,0.1);
+  }
+  .info-block:last-child { border-bottom: none; margin-bottom: 0; }
+  .info-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+  }
+  .info-value {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 300;
+    color: var(--cream-light);
+    line-height: 1.7;
+  }
+  .info-value a {
+    color: var(--cream-light);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .info-value a:hover { color: var(--gold-light); }
+  .hours-row {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--sans);
+    font-size: 0.88rem;
+    color: var(--cream);
+    opacity: 0.7;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .hours-row:last-child { border-bottom: none; }
+  .hours-row.today { opacity: 1; color: var(--cream-light); }
+  .hours-row.today .day { color: var(--gold); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #0E0C06;
+    border-top: 1px solid rgba(200,151,58,0.15);
+    padding: 4rem 0 2rem;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 3rem;
+  }
+  .footer-brand {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    font-weight: 300;
+    color: var(--gold-light);
+    margin-bottom: 1rem;
+  }
+  .footer-tagline {
+    font-size: 0.85rem;
+    line-height: 1.8;
+    color: var(--cream);
+    opacity: 0.5;
+    max-width: 300px;
+  }
+  .footer-heading {
+    font-size: 0.68rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+  }
+  .footer-links { list-style: none; }
+  .footer-links li { margin-bottom: 0.6rem; }
+  .footer-links a {
+    font-size: 0.88rem;
+    color: var(--cream);
+    opacity: 0.55;
+    text-decoration: none;
+    transition: opacity 0.2s, color 0.2s;
+  }
+  .footer-links a:hover { opacity: 0.9; color: var(--gold-light); }
+  .footer-bottom {
+    padding-top: 2rem;
+    border-top: 1px solid rgba(200,151,58,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer-copy {
+    font-size: 0.75rem;
+    color: var(--cream);
+    opacity: 0.3;
+    letter-spacing: 0.05em;
+  }
+  .footer-ornament {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    color: var(--gold);
+    opacity: 0.4;
+    font-style: italic;
+  }
+
+  /* ── SEPARATOR ORNAMENT ── */
+  .ornament-divider {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 2.5rem 0;
+  }
+  .ornament-divider .line {
+    flex: 1;
+    height: 1px;
+    background: rgba(200,151,58,0.2);
+  }
+  .ornament-divider .diamond {
+    width: 6px;
+    height: 6px;
+    background: var(--gold);
+    transform: rotate(45deg);
+    opacity: 0.6;
+  }
+
+  /* ── PRICE BADGE ── */
+  .price-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.15em;
+    color: var(--gold-pale);
+    margin-bottom: 1rem;
+    opacity: 0.8;
+  }
+  .price-badge::before, .price-badge::after {
+    content: '—';
+    color: var(--gold);
+    opacity: 0.5;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1.2rem 2rem; }
+    nav.scrolled { padding: 0.8rem 2rem; }
+    .nav-links { display: none; }
+    .container { padding: 0 2rem; }
+    .about-grid, .info-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .menu-grid { grid-template-columns: 1fr 1fr; }
+    .menu-card:first-child { grid-row: span 1; }
+    .pillars-grid { grid-template-columns: 1fr; }
+    .pillar { border-right: none; border-bottom: 1px solid rgba(200,151,58,0.12); }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .about-img-frame::before { display: none; }
+    .about-accent { display: none; }
+    .reviews-summary { flex-direction: column; gap: 2rem; }
+    .summary-divider { width: 60px; height: 1px; }
+    section { padding: 4rem 0; }
+  }
+
+  @media (max-width: 600px) {
+    .menu-grid { grid-template-columns: 1fr; }
+    .hero-ctas { flex-direction: column; align-items: center; }
+    .menu-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">Zum Balkan Ställchen</a>
+  <ul class="nav-links">
+    <li><a href="#about">Über Uns</a></li>
+    <li><a href="#menu">Speisekarte</a></li>
+    <li><a href="#reviews">Bewertungen</a></li>
+    <li><a href="#info">Kontakt</a></li>
+  </ul>
+  <a href="tel:+4920514943732" class="nav-reserve">Reservieren</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-ornament"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Authentische Balkanküche · Velbert seit Jahren</div>
+    <h1 class="hero-title">Zum Balkan<br><em>Ställchen</em></h1>
+    <p class="hero-subtitle">Wo Tradition auf Leidenschaft trifft</p>
+    <div class="hero-divider"></div>
+    <p class="hero-tagline">
+      Cevapcici, Kajmak, Ajvar — handgemacht nach Originalrezepten.<br>
+      Südstraße 1, Velbert
+    </p>
+    <div class="hero-ctas">
+      <a href="tel:+4920514943732" class="btn-primary">Tisch reservieren</a>
+      <a href="#menu" class="btn-ghost">Speisekarte ansehen</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Entdecken</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-wrap">
+        <div class="about-img-frame"></div>
+        <div class="about-accent">
+          <div class="num">4.9</div>
+          <div class="lbl">Google</div>
+        </div>
+      </div>
+      <div class="about-text">
+        <div class="section-eyebrow">Unsere Geschichte</div>
+        <h2 class="section-title">Ein Hauch von<br><em>Balkan</em> in Velbert</h2>
+        <div class="ornament-divider">
+          <div class="line"></div>
+          <div class="diamond"></div>
+          <div class="line"></div>
+        </div>
+        <p class="section-body">
+          Das Zum Balkan Ställchen ist mehr als ein Restaurant — es ist eine Reise auf den Balkan, direkt im Herzen von Velbert. Jedes Gericht erzählt eine Geschichte von Generationen, von rauchigen Grills, von frisch gemischten Gewürzen und von Gastfreundschaft, die man spürt.
+        </p>
+        <br>
+        <p class="section-body">
+          Wir bereiten unsere Spezialitäten täglich frisch zu — von handgeformten Cevapcici bis hin zu hausgemachtem Kajmak und würzigem Ajvar. Kommen Sie, erleben Sie den Geschmack des Balkans.
+        </p>
+        <div class="ornament-divider">
+          <div class="line"></div>
+          <div class="diamond"></div>
+          <div class="line"></div>
+        </div>
+        <div class="rating-badge">
+          <span class="stars">★★★★★</span>
+          <span class="rating-text">4.9 · 249 Bewertungen · Google Maps</span>
+        </div>
+      
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section id="pillars">
+  <div class="container">
+    <div class="pillars-grid">
+      <div class="pillar">
+        <div class="pillar-icon">✦</div>
+        <div class="pillar-title">Authentizität</div>
+        <p class="pillar-body">Originalrezepte aus der Balkanregion, weitergegeben über Generationen. Kein Kompromiss beim Geschmack — nur das Beste der traditionellen Küche.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">◈</div>
+        <div class="pillar-title">Frische Zutaten</div>
+        <p class="pillar-body">Täglich frisch zubereitete Speisen. Kajmak, Ajvar und Bratkartoffeln — alles handgemacht mit ausgesuchten Zutaten aus der Region.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">❖</div>
+        <div class="pillar-title">Herzliche Atmosphäre</div>
+        <p class="pillar-body">Ein Ort zum Verweilen, Genießen und Wohlfühlen. Unsere Gäste aus New York, Velbert und aller Welt kehren immer wieder gerne zurück.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu">
+  <div class="container">
+    <div class="menu-header">
+      <div>
+        <div class="section-eyebrow">Unsere Küche</div>
+        <h2 class="section-title">Signature<br><em>Gerichte</em></h2>
+      </div>
+      <p class="section-body">Handgemacht, täglich frisch, unverkennbar balkanisch. Jedes Gericht eine Einladung auf eine kulinarische Reise.</p>
+    </div>
+
+    <div class="menu-grid">
+      <div class="menu-card">
+        <div class="menu-card-bg mc1" style="height:100%;"></div>
+        <div class="menu-card-overlay"></div>
+        <div class="menu-card-content">
+          <div class="menu-card-tag">Signature · Beliebtester</div>
+          <div class="menu-card-name">Cevapcici mit Kajmak &amp; Ajvar</div>
+          <div class="menu-card-desc">Handgefertigte Hackfleischröllchen, cremiger Kajmak, hausgemachtes Ajvar, Bratkartoffeln und gegrilltes Brot</div>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-bg mc2" style="height:100%;"></div>
+        <div class="menu-card-overlay"></div>
+        <div class="menu-card-content">
+          <div class="menu-card-tag">Klassiker</div>
+          <div class="menu-card-name">Rinderleber vom Grill</div>
+          <div class="menu-card-desc">Zartes Rindfleisch, traditionell gewürzt und über offenem Feuer gegart</div>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-bg mc3" style="height:100%;"></div>
+        <div class="menu-card-overlay"></div>
+        <div class="menu-card-content">
+          <div class="menu-card-tag">Beilage</div>
+          <div class="menu-card-name">Hausgemachter Ajvar</div>
+          <div class="menu-card-desc">Geröstete Paprika-Creme nach Großmutters Rezept</div>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-bg mc4" style="height:100%;"></div>
+        <div class="menu-card-overlay"></div>
+        <div class="menu-card-content">
+          <div class="menu-card-tag">Grillplatte</div>
+          <div class="menu-card-name">Gemischtes Grillfleisch</div>
+          <div class="menu-card-desc">Auswahl feiner Grillspezialitäten für zwei Personen</div>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-bg mc5" style="height:100%;"></div>
+        <div class="menu-card-overlay"></div>
+        <div class="menu-card-content">
+          <div class="menu-card-tag">Dessert</div>
+          <div class="menu-card-name">Baklava &amp; Süßes</div>
+          <div class="menu-card-desc">Traditionelle Balkansüßigkeiten zum perfekten Abschluss</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-footer">
+      <p style="font-size:0.82rem;color:var(--cream);opacity:0.5;margin-bottom:1.5rem;letter-spacing:0.05em;">Vollständige Speisekarte auf Anfrage oder vor Ort</p>
+      <a href="tel:+4920514943732" class="btn-primary">Tisch reservieren</a>
+    </div>
+  </div>
+</section>
+
+<!-- AMBIANCE STRIP -->
+<div id="ambiance">
+  <div class="ambiance-bg"></div>
+  <div class="ambiance-content">
+    <blockquote class="ambiance-quote">
+      „The best place in Europe — I came from New York and I will never forget this meal."
+    </blockquote>
+    <div class="ambiance-attr">— Gast aus New York · Google Bewertung ★★★★★</div>
+  </div>
+</div>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="container">
+    <div class="reviews-header">
+      <div class="section-eyebrow">Was unsere Gäste sagen</div>
+      <h2 class="section-title" style="text-align:center;">Stimmen aus<br><em>aller Welt</em></h2>
+    </div>
+
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"The best food in Velbert — I had the best night and the best meal on my holiday. I will come back again."</p>
+        <div class="review-author">Linda Covino</div>
+        <div class="review-location">Velbert, Deutschland</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Great atmosphere, great food, great service. Alles perfekt — man fühlt sich sofort wie zuhause."</p>
+        <div class="review-author">Magribe Daci</div>
+        <div class="review-location">Deutschland</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"The best place in Europe. I was here once from New York — very nice place. Unforgettable experience."</p>
+        <div class="review-author">Ardian Ibishi</div>
+        <div class="review-location">New York, USA</div>
+      </div>
+    </div>
+
+    <div class="reviews-summary">
+      <div>
+        <div class="summary-num">4.9</div>
+        <div class="summary-lbl">Durchschnitt</div>
+      </div>
+      <div class="summary-divider"></div>
+      <div>
+        <div class="summary-num">249</div>
+        <div class="summary-lbl">Bewertungen</div>
+      </div>
+      <div class="summary-divider"></div>
+      <div>
+        <div class="summary-num">100%</div>
+        <div class="summary-lbl">5-Sterne-Gäste</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INFO -->
+<section id="info">
+  <div class="container">
+    <div class="info-grid">
+      <div>
+        <div class="section-eyebrow">Besuchen Sie uns</div>
+        <h2 class="section-title">Finden Sie<br><em>Uns</em></h2>
+        <div class="map-placeholder">
+          <div class="map-pin">📍</div>
+          <div class="map-address">
+            Südstraße 1<br>
+            42551 Velbert<br>
+            Deutschland
+          </div>
+          <a href="https://maps.google.com/?q=Südstraße+1,+42551+Velbert,+Germany" target="_blank" class="map-link">In Google Maps öffnen →</a>
+        </div>
+      </div>
+      <div class="info-details">
+        <div class="info-block">
+          <div class="info-label">Adresse</div>
+          <div class="info-value">Südstraße 1<br>42551 Velbert, Deutschland</div>
+        </div>
+        <div class="info-block">
+          <div class="info-label">Telefon</div>
+          <div class="info-value"><a href="tel:+4920514943732">+49 2051 4943732</a></div>
+        </div>
+        <div class="info-block">
+          <div class="info-label">Öffnungszeiten</div>
+          <div class="info-value">
+            <div class="hours-row">
+              <span class="day">Montag – Dienstag</span>
+              <span>Geschlossen</span>
+            </div>
+            <div class="hours-row today">
+              <span class="day">Mittwoch – Donnerstag</span>
+              <span>17:00 – 22:00</span>
+            </div>
+            <div class="hours-row">
+              <span class="day">Freitag – Samstag</span>
+              <span>17:00 – 23:00</span>
+            </div>
+            <div class="hours-row">
+              <span class="day">Sonntag</span>
+              <span>12:00 – 21:00</span>
+            </div>
+          </div>
+        </div>
+        <div class="info-block">
+          <div class="info-label">Service</div>
+          <div class="info-value" style="font-family:var(--sans);font-size:0.9rem;opacity:0.75;">
+            🍽 &nbsp;Vor Ort · &nbsp;🥡 &nbsp;Zum Mitnehmen · &nbsp;🛵 &nbsp;Lieferung
+          </div>
+        </div>
+
+        <a href="tel:+4920514943732" class="btn-primary" style="display:inline-block;margin-top:1rem;">Jetzt reservieren</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Zum Balkan Ställchen</div>
+        <p class="footer-tagline">Authentische Balkanküche im Herzen von Velbert. Täglich frisch, handgemacht, mit Liebe serviert.</p>
+      </div>
+      <div>
+        <div class="footer-heading">Navigation</div>
+        <ul class="footer-links">
+          <li><a href="#about">Über Uns</a></li>
+          <li><a href="#menu">Speisekarte</a></li>
+          <li><a href="#reviews">Bewertungen</a></li>
+          <li><a href="#info">Kontakt</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Kontakt</div>
+        <ul class="footer-links">
+          <li><a href="tel:+4920514943732">+49 2051 4943732</a></li>
+          <li><a href="https://maps.google.com/?q=Südstraße+1,+42551+Velbert" target="_blank">Südstraße 1, 42551 Velbert</a></li>
+          <li><a href="https://maps.google.com/search?q=Zum+Balkan+Ställchen" target="_blank">Google Bewertungen</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 Zum Balkan Ställchen · Velbert, Deutschland</div>
+      <div class="footer-ornament">★ 4.9 auf Google</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) navbar.classList.add('scrolled');
+    else navbar.classList.remove('scrolled');
+  });
+
+  // Smooth reveal on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.pillar, .review-card, .menu-card, .info-block').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
